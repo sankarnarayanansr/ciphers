@@ -9,7 +9,7 @@ public class Vigenere {
 for (int i=0;i<plain.length();i++){
         int s=hs.get(keyboard.charAt(i));
         int d=hs.get(plain.charAt(i));
-        System.out.println(s+d);
+        // System.out.println(s+d);
         out+=ds.get((d-s+26)%26);
 }
 System.out.println(out);
@@ -21,7 +21,7 @@ System.out.println(out);
 for (int i=0;i<plain.length();i++){
         int s=hs.get(keyboard.charAt(i));
         int d=hs.get(plain.charAt(i));
-        System.out.println((s+d)%26);
+        // System.out.println((s+d)%26);
         out+=ds.get((s+d)%26);
 }
 System.out.println(out);
