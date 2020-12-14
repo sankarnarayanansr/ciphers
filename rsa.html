@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSA</title>
+</head>
+
+<body>
+    <h1>RSA</h1>
+    <input id="p" placeholder="enter p" />
+    <input id="q" placeholder="enter q" />
+    <input id="text" placeholder="text" />
+    <button onclick="calculate()">calculate</button>
+
+    <p id="msg"></p>
+    <p id="encrypt"></p>
+    <p id="decrypt"></p>
+</body>
+
+</html>
+<script>
+    function gcd(a, b) {
+        if (b == 0) {
+            return a
+        } else {
+            return gcd(b, a % b)
+        }
+    }
+
+    function calculate() {
+        var p = parseInt(document.getElementById('p').value)
+        var q = parseInt(document.getElementById('q').value)
+        var txt = parseInt(document.getElementById('text').value)
+
+        var n = p * q
+        var t = (p - 1) * (q - 1)
+        for (var e = 2; e < t; e++) {
+            if (gcd(e, t) == 1) {
+                break
+            }
+        }
+        var d = 0
+        for (var i = 1; i < 10; i++) {
+            var x = 1 + i * t
+            if (x % e == 0) {
+                d = parseInt(x / e)
+                break
+            }
+        }
+
+        d = BigInt(d)
+        n = BigInt(n)
+        txt = BigInt(txt)
+        e = BigInt(e)
+        document.getElementById('msg').innerHTML = txt
+
+        var c = (txt ** e) % n
+        console.log(d, c)
+        document.getElementById('encrypt').innerHTML = c
+
+        document.getElementById('decrypt').innerHTML = (c ** d) % n
+
+
+
+    }
+</script>
