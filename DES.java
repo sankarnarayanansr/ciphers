@@ -14,10 +14,10 @@ class DES {
             des.init(Cipher.ENCRYPT_MODE,seckey);//init
             String txt=sc.next();
             byte[] text=txt.getBytes();
-            byte[] enc=des.doFinal(text);
+            byte[] enc=des.doFinal(text);//process
             System.out.println("Encrypted is "+enc);
             des.init(Cipher.DECRYPT_MODE,seckey);//init
-            byte[] decrypt=des.doFinal(enc);
+            byte[] decrypt=des.doFinal(enc);//process
             System.out.println("Decrypted is "+new String(decrypt));
 
 

@@ -42,25 +42,25 @@
             }
         }
         var d = 0
-        for (var i = 1; i < 10; i++) {
-            var x = 1 + i * t
-            if (x % e == 0) {
-                d = parseInt(x / e)
+        for (var i = 1; i < t; i++) {
+            if ((i * e) % t == 1) {
+                d = i
                 break
             }
+
         }
 
         d = BigInt(d)
         n = BigInt(n)
         txt = BigInt(txt)
         e = BigInt(e)
-        document.getElementById('msg').innerHTML = txt
+        document.getElementById('msg').innerHTML = "message " + txt
 
         var c = (txt ** e) % n
         console.log(d, c)
-        document.getElementById('encrypt').innerHTML = c
+        document.getElementById('encrypt').innerHTML = "encrypted " + c
 
-        document.getElementById('decrypt').innerHTML = (c ** d) % n
+        document.getElementById('decrypt').innerHTML = "decrypted " + (c ** d) % n
 
 
 
